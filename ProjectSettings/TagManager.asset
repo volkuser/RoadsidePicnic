@@ -44,3 +44,6 @@ TagManager:
   - name: Persons
     uniqueID: 1400682877
     locked: 0
+  - name: Staff
+    uniqueID: 1865192807
+    locked: 0

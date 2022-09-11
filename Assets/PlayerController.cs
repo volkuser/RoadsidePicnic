@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-    
+    [SerializeField] private float speed;
     private Vector2 _direction;
+    
     private Rigidbody2D _rigidBody;
+    [SerializeField] private Animator animator;
+    private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+    private static readonly int Vertical = Animator.StringToHash("Vertical");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     private void Start()
     {
@@ -16,6 +20,10 @@ public class PlayerController : MonoBehaviour
     {
         _direction.x = Input.GetAxisRaw("Horizontal");
         _direction.y = Input.GetAxisRaw("Vertical");
+        
+        animator.SetFloat(Horizontal, _direction.x);
+        animator.SetFloat(Vertical, _direction.y);
+        animator.SetFloat(Speed, _direction.sqrMagnitude);
     }
 
     private void FixedUpdate()

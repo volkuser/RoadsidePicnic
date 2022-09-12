@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Post Processing
   - Water
   - UI
   - Persons
-  - 
+  - Player
   - 
   - 
   - 
@@ -41,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Persons
+  - name: Post-processing
     uniqueID: 1400682877
     locked: 0
-  - name: Staff
+  - name: Objects
     uniqueID: 1865192807
     locked: 0

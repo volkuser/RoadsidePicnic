@@ -23,7 +23,7 @@ public class DoorController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
     }
 
-    void Update()
+    private void Update()
     {
         _playerDetect = Physics2D.OverlapBox(groundPosition.position, 
             new Vector2(width, height), 0, whatIsPlayer);

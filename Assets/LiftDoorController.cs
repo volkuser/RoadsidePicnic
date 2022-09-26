@@ -9,8 +9,6 @@ public class LiftDoorController : MonoBehaviour
     private bool _isOpened;
     [SerializeField] private Transform groundPosition;
     private BoxCollider2D _boxCollider2D;
-    [SerializeField] private GameObject roomDarkening;
-    private GameObject _player;
     
     private Animator _animator;
     private static readonly int Open = Animator.StringToHash("Open");
@@ -20,34 +18,38 @@ public class LiftDoorController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
-        _player = GameObject.FindWithTag("Player");
     }
 
-    void Update()
+    private void Start()
+    {
+        Invoke(nameof(OpenDoors), 0.2f);
+        //TODO LIFT SONG
+        Invoke(nameof(CloseDoors), 5f);
+    }
+
+    private void Update()
     {
         _playerDetect = Physics2D.OverlapBox(groundPosition.position, 
             new Vector2(width, height), 0, whatIsPlayer);
 
-        if (!_playerDetect) return;
-        if (!Input.GetKeyDown(KeyCode.E)) return;
+        if (!_playerDetect || !Input.GetKeyDown(KeyCode.E)) return;
         if(!_isOpened) {
-            roomDarkening.SetActive(false);
-            _animator.ResetTrigger(Close);
-            _animator.SetTrigger(Open);
-            _boxCollider2D.enabled = false;
-            _isOpened = true;
-        }
-        else
-        {
-            _animator.ResetTrigger(Open);
-            _animator.SetTrigger(Close);
-            if (_player.transform.position.y < groundPosition.position.y) Invoke(nameof(DarkeningOverTime), 0.6f);
-            _boxCollider2D.enabled = true;
-            _isOpened = false;
+            //TODO LIFT IS BROKEN
         }
     }
 
-    private void DarkeningOverTime() => roomDarkening.SetActive(true);
+    private void OpenDoors()
+    {
+        _animator.SetTrigger(Open);
+        _boxCollider2D.enabled = false;
+    }
+    
+    private void CloseDoors()
+    {
+        _animator.ResetTrigger(Open);
+        _animator.SetTrigger(Close);
+        _boxCollider2D.enabled = true;
+    }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;

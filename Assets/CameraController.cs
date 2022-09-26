@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     
     private void LateUpdate()
     {
-        Vector3 direction = transform.position;
+        var direction = transform.position;
         var position = _player.position;
         direction.x = position.x;
         direction.y = position.y;

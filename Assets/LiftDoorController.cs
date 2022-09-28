@@ -41,8 +41,10 @@ public class LiftDoorController : MonoBehaviour
     private void OpenDoors()
     {
         _animator.SetTrigger(Open);
-        _boxCollider2D.enabled = false;
+        Invoke(nameof(BoxColliderDisabled), 0.6f);
     }
+    
+    private void BoxColliderDisabled() => _boxCollider2D.enabled = false;
     
     private void CloseDoors()
     {

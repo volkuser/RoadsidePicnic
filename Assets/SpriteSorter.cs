@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpriteSorter : MonoBehaviour
 {
     [SerializeField] private bool isStatic = true;
-    [SerializeField] private float offset = 0;
+    [SerializeField] private float offset;
     private const int SortingOrderBase = 0;
     private Renderer _renderer;
 

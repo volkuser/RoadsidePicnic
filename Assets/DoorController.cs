@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    // actions
     private bool _playerDetect;
     [SerializeField] private float width;
     [SerializeField] private float height;
@@ -12,9 +14,18 @@ public class DoorController : MonoBehaviour
     [SerializeField] private GameObject roomDarkening;
     private GameObject _player;
     
+    // lock system
+    [SerializeField] private bool hasLockSystem;
+    [SerializeField] [CanBeNull] private GameObject lockSystem; 
+    [SerializeField] [CanBeNull] private GameObject uiLockSystem;
+    [SerializeField] [CanBeNull] private Sprite openedLockSystem;
+    [SerializeField] [CanBeNull] private Sprite closedLockSystem;
+    
+    // animations
     private Animator _animator;
     private static readonly int Open = Animator.StringToHash("Open");
     private static readonly int Close = Animator.StringToHash("Close");
+    private static readonly int Use = Animator.StringToHash("Use");
 
     private void Awake()
     {
@@ -30,12 +41,22 @@ public class DoorController : MonoBehaviour
 
         if (!_playerDetect) return;
         if (!Input.GetKeyDown(KeyCode.E)) return;
-        if(!_isOpened) {
+        if(!_isOpened)
+        {
+            if (hasLockSystem)
+            {
+                if (!PlayerInventory.hasCardForLockSystem) return;
+                if (lockSystem != null && uiLockSystem != null)
+                {
+                    uiLockSystem.SetActive(true); 
+                    var uiLockSystemAnimator = uiLockSystem.GetComponent<Animator>();
+                    // uiLockSystemAnimator.ResetTrigger(Use); 
+                    uiLockSystemAnimator.SetTrigger(Use);
+                }
+            }
             roomDarkening.SetActive(false);
-            _animator.ResetTrigger(Close);
             _animator.SetTrigger(Open);
-            _boxCollider2D.enabled = false;
-            _isOpened = true;
+            lockSystem!.GetComponent<SpriteRenderer>().sprite = openedLockSystem;
         }
         else
         {
@@ -44,7 +65,15 @@ public class DoorController : MonoBehaviour
             if (_player.transform.position.y < groundPosition.position.y) Invoke(nameof(DarkeningOverTime), 0.3f);
             _boxCollider2D.enabled = true;
             _isOpened = false;
+            lockSystem!.GetComponent<SpriteRenderer>().sprite = closedLockSystem;
         }
+    }
+    
+    // event of open
+    private void AfterDoorOpened()
+    {
+        _boxCollider2D.enabled = false;
+        _isOpened = true;
     }
 
     private void DarkeningOverTime() => roomDarkening.SetActive(true);

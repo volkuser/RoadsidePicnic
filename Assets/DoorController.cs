@@ -50,7 +50,6 @@ public class DoorController : MonoBehaviour
                 {
                     uiLockSystem.SetActive(true); 
                     var uiLockSystemAnimator = uiLockSystem.GetComponent<Animator>();
-                    // uiLockSystemAnimator.ResetTrigger(Use); 
                     uiLockSystemAnimator.SetTrigger(Use);
                 }
             }

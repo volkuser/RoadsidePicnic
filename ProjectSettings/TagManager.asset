@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RedFace
+  - KirilFace
+  - BorovFace
+  - DialogWindow
+  - SpeakerFace
+  - Speech
   layers:
   - Default
   - TransparentFX

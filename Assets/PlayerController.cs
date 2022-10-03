@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private static readonly int Vertical = Animator.StringToHash("Vertical");
     private static readonly int Speed = Animator.StringToHash("Speed");
 
+    public static bool dialogWithKiril1 = true;
+    public static bool dialogWithKiril2 = false;
+
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();

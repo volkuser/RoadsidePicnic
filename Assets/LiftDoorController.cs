@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class LiftDoorController : MonoBehaviour
@@ -6,9 +7,12 @@ public class LiftDoorController : MonoBehaviour
     [SerializeField] private float width;
     [SerializeField] private float height;
     [SerializeField] private LayerMask whatIsPlayer;
-    private bool _isOpened;
-    [SerializeField] private Transform groundPosition;
+    [SerializeField] private Transform zoneCenter;
     private BoxCollider2D _boxCollider2D;
+    private bool _isClosed;
+
+    [SerializeField] private GameObject dialogWindow;
+    [SerializeField] private TextMeshProUGUI guiText;
     
     private Animator _animator;
     private static readonly int Open = Animator.StringToHash("Open");
@@ -23,28 +27,30 @@ public class LiftDoorController : MonoBehaviour
     private void Start()
     {
         Invoke(nameof(OpenDoors), 0.2f);
-        //TODO LIFT SONG
-        Invoke(nameof(CloseDoors), 5f);
+        Invoke(nameof(CloseDoors), 7f);
     }
 
     private void Update()
     {
-        _playerDetect = Physics2D.OverlapBox(groundPosition.position, 
+        _playerDetect = Physics2D.OverlapBox(zoneCenter.position, 
             new Vector2(width, height), 0, whatIsPlayer);
 
-        if (!_playerDetect || !Input.GetKeyDown(KeyCode.E)) return;
-        if(!_isOpened) {
-            //TODO LIFT IS BROKEN
-        }
+        if (!Input.GetKeyDown(KeyCode.E)) return;
+        if (!_playerDetect) return;
+        if (!_isClosed) return;
+        StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, "*Ну емае. Застрял.*", guiText));
     }
 
-    private void OpenDoors()
-    {
-        _animator.SetTrigger(Open);
-    }
-    
     private void BoxColliderDisabled() => _boxCollider2D.enabled = false;
-    
+
+    private void OpenDoors() => _animator.SetTrigger(Open);
+
+    private void AfterClosing()
+    {
+        _boxCollider2D.enabled = true;
+        _isClosed = true;
+    }
+
     private void CloseDoors()
     {
         _animator.ResetTrigger(Open);
@@ -53,8 +59,8 @@ public class LiftDoorController : MonoBehaviour
     }
 
     private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        var position = groundPosition.position;
+        Gizmos.color = Color.green;
+        var position = zoneCenter.position;
         Gizmos.DrawWireCube(position, new Vector2(width, height));  
     }
 }

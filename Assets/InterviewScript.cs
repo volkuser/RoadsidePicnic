@@ -5,7 +5,6 @@ using UnityEngine;
 public class InterviewScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI interviewerSpeech;
-    private string _textInterviewerSpeech;
     private readonly string[] _interviewerQuotes =
     {
         "Что вы подумали, когда ваш родной город оказался объектом нашествия инопланетной сверхцивилизации?...",
@@ -24,7 +23,6 @@ public class InterviewScript : MonoBehaviour
         "Это настоящая новая профессия."
     };
     [SerializeField] private TextMeshProUGUI researcherSpeech;
-    private string _textResearcherSpeech;
     private readonly string[] _researcherQuotes =
     {
         "Честно говоря, сначала я подумал, что это шутка. Трудно было себе представить, " +

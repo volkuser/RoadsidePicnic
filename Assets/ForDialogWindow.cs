@@ -8,7 +8,7 @@ public class ForDialogWindow : MonoBehaviour
     public static IEnumerator OneUseWithOne(GameObject dialogWindow, 
         string text, TMP_Text gui, 
         GameObject currentSpeakerFace = null, GameObject desiredSpeakerFace = null,
-        float delay = 0.05f)
+        float delay = 0.00001f /*0.008f*/)
     {
         Sprite bufferSpeakerFace = null;
         if (desiredSpeakerFace != null)
@@ -40,7 +40,7 @@ public class ForDialogWindow : MonoBehaviour
         }
     }
     
-    public static IEnumerator MoreUsesWithTwo(GameObject dialogWindow, 
+    /*public static IEnumerator MoreUsesWithTwo(GameObject dialogWindow, 
         string[] firstMember, string[] secondMember, TMP_Text gui, float delay = 0.05f)
     {
         dialogWindow.SetActive(true);
@@ -92,5 +92,5 @@ public class ForDialogWindow : MonoBehaviour
                 break;
             }
         }
-    }
+    }*/
 }

@@ -36,9 +36,41 @@ public class KirilController : MonoBehaviour
     {
         "Снова бьешься с этими «пустышками»?",
         "*«Пустышка» - действительно штука загадочная. Каждый раз как увижу – не могу, поражаюсь.", // #
-        "Всего-то в ней два медных диска с чайное блюдце. А между ними, кроме расстояния в 40 мм ничего нет.", // #
+        "Всего-то в ней два медных диска с чайное блюдце. А между ними, кроме расстояния в 40 см ничего нет.", // #
         "Пустота и пустота, один воздух.*",
         "Н-ну… Хорошо."
+    };
+    
+    private readonly string[] _secondDialogRed =
+    {
+        "А дверь я выломать должен что ли?",
+        "Ц…"
+    };
+    
+    private readonly string[] _secondDialogKiril =
+    {
+        "Ой.. Карта была где-то тут, посмотри на столах."
+    };
+    
+    private readonly string[] _thirdDialogRed =
+    {
+        "Нет ее здесь нигде.",
+    };
+    
+    private readonly string[] _thirdDialogKiril =
+    {
+        "Попробуй поискать в соседней лаборатории. "
+    };
+    
+    private readonly string[] _fourthDialogRed =
+    {
+        "И там ее тоже нет.",
+        "Об стенку только не бейся. Найду твою карту. Пройдусь по этажу, может оставил где."
+    };
+    
+    private readonly string[] _fourthDialogKiril =
+    {
+        "Как же так.. Неужели я потерял ее?.. Ее обязательно нужно найти."
     };
 
     private void Awake()
@@ -65,16 +97,33 @@ public class KirilController : MonoBehaviour
         _playerDetectInDialogZone = Physics2D.OverlapBox(dialogCenter.position,
             new Vector2(dialogWidth, dialogHeight), 0, whatIsPlayer);
         if (!_playerDetectInDialogZone) return;
-        if (PlayerController.dialogWithKiril1)
+        if (PlayerController.DialogWithKiril1)
         {
             StartCoroutine(Says());
-            PlayerController.dialogWithKiril1 = false;
+            PlayerController.DialogWithKiril1 = false;
+        } 
+        
+        if (!Input.GetKeyDown(KeyCode.E)) return;
+        if (PlayerController.DialogWithKiril2)
+        {
+            StartCoroutine(Says());
+            PlayerController.DialogWithKiril2 = false;
+            PlayerController.PerspectiveOnDialogWithKiril2 = false;
+        } else if (PlayerController.DialogWithKiril3)
+        {
+            StartCoroutine(Says());
+            PlayerController.DialogWithKiril3 = false;
+        } else if (PlayerController.DialogWithKiril4)
+        {
+            StartCoroutine(Says());
+            PlayerController.DialogWithKiril4 = false;
+            PlayerController.PerspectiveOnDialogWithKiril4 = false;
         }
     }
 
     private IEnumerator Says()
     {
-        if (PlayerController.dialogWithKiril1)
+        if (PlayerController.DialogWithKiril1)
         {
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _firstDialogKiril[0],
                 guiText, guiFace, kirilFace));
@@ -93,6 +142,31 @@ public class KirilController : MonoBehaviour
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _firstDialogKiril[3],
                 guiText, guiFace, kirilFace));
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _firstDialogRed[4],
+                guiText));
+            PlayerController.PerspectiveOnDialogWithKiril2 = true;
+        } else if (PlayerController.DialogWithKiril2)
+        {
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _secondDialogRed[0],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _secondDialogKiril[0],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _secondDialogRed[1],
+                guiText));
+            PlayerController.DialogWithKiril3 = true;
+        } else if (PlayerController.DialogWithKiril3)
+        {
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _thirdDialogRed[0],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _thirdDialogKiril[0],
+                guiText, guiFace, kirilFace));
+            PlayerController.PerspectiveOnDialogWithKiril4 = true;
+        } else if (PlayerController.DialogWithKiril4)
+        {
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _fourthDialogRed[0],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _fourthDialogKiril[0],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _fourthDialogRed[1],
                 guiText));
         }
     }

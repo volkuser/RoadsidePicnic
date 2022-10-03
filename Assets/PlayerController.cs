@@ -11,8 +11,14 @@ public class PlayerController : MonoBehaviour
     private static readonly int Vertical = Animator.StringToHash("Vertical");
     private static readonly int Speed = Animator.StringToHash("Speed");
 
-    public static bool dialogWithKiril1 = true;
-    public static bool dialogWithKiril2 = false;
+    // checkers for story
+    public static bool DialogWithKiril1 = true;
+    public static bool PerspectiveOnDialogWithKiril2 = false;
+    public static bool DialogWithKiril2 = false;
+    public static bool DialogWithKiril3 = false;
+    public static bool PerspectiveOnDialogWithKiril4 = false;
+    public static bool DialogWithKiril4 = false;
+    public static bool Perspective
 
     private void Start()
     {

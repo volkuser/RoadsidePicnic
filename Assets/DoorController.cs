@@ -20,7 +20,7 @@ public class DoorController : MonoBehaviour
     [SerializeField] [CanBeNull] private GameObject uiLockSystem;
     [SerializeField] [CanBeNull] private Sprite openedLockSystem;
     [SerializeField] [CanBeNull] private Sprite closedLockSystem;
-    
+
     // animations
     private Animator _animator;
     private static readonly int Open = Animator.StringToHash("Open");
@@ -41,11 +41,15 @@ public class DoorController : MonoBehaviour
 
         if (!_playerDetect) return;
         if (!Input.GetKeyDown(KeyCode.E)) return;
+        
+        if (PlayerController.PerspectiveOnDialogWithKiril2) PlayerController.DialogWithKiril2 = true;
+        
         if(!_isOpened)
         {
             if (hasLockSystem)
             {
                 if (!PlayerInventory.hasCardForLockSystem) return;
+
                 if (lockSystem != null && uiLockSystem != null)
                 {
                     uiLockSystem.SetActive(true); 

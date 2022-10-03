@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class TakingCardFromTableController : MonoBehaviour
@@ -10,6 +11,9 @@ public class TakingCardFromTableController : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite withoutCard;
+    
+    [SerializeField] private GameObject dialogWindow;
+    [SerializeField] private TextMeshProUGUI guiText;
 
     private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();    
     
@@ -19,10 +23,14 @@ public class TakingCardFromTableController : MonoBehaviour
             new Vector2(width, height), 0, whatIsPlayer);
 
         if (!_playerDetect) return;
+        if (!PlayerController.PerspectiveOnTakingCard) return;
         if (!Input.GetKeyDown(KeyCode.E)) return;
         if (PlayerInventory.hasCardForLockSystem) return;
+        StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow,
+            "*Емае, Кирилл, я даже не особо удивлен.*", guiText));
         PlayerInventory.hasCardForLockSystem = true;
         _spriteRenderer.sprite = withoutCard;
+        PlayerController.PerspectiveOnTakingCard = false;
     }
     
     private void OnDrawGizmosSelected() 

@@ -168,6 +168,7 @@ public class KirilController : MonoBehaviour
                 guiText, guiFace, kirilFace));
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _fourthDialogRed[1],
                 guiText));
+            PlayerController.PerspectiveOnTakingCard = true;
         }
     }
 

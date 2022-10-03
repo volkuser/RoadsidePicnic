@@ -40744,6 +40744,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   withoutCard: {fileID: 21300000, guid: 045f44cda3bfd36708e88e02f4d29d35, type: 3}
+  dialogWindow: {fileID: 2000075067}
+  guiText: {fileID: 521937518}
 --- !u!1 &1943746377
 GameObject:
   m_ObjectHideFlags: 0

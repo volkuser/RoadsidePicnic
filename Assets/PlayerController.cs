@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public static bool DialogWithKiril3 = false;
     public static bool PerspectiveOnDialogWithKiril4 = false;
     public static bool DialogWithKiril4 = false;
-    public static bool Perspective
+    public static bool PerspectiveOnTakingCard = false;
 
     private void Start()
     {

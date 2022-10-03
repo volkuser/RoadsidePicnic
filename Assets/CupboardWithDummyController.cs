@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CupboardWithDummyController : MonoBehaviour
@@ -16,6 +17,9 @@ public class CupboardWithDummyController : MonoBehaviour
     private static readonly int Opened = Animator.StringToHash("Opened");
     private static readonly int Close = Animator.StringToHash("Close");
     private static readonly int Open = Animator.StringToHash("Open");
+    
+    [SerializeField] private GameObject dialogWindow;
+    [SerializeField] private TextMeshProUGUI guiText;
 
     private void Awake()
     {
@@ -37,6 +41,9 @@ public class CupboardWithDummyController : MonoBehaviour
                 {
                     _animator.SetTrigger(OpenWithDummy);
                     PlayerInventory.hasFirstDummy = true;
+                    StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
+                        "*Нашлась. Пора отдать ее Кириллу и с моим рабством покончено.*", guiText));
+                    PlayerController.DialogWithKiril5 = true;
                 }
                 else
                 {

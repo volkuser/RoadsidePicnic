@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class TakingDummyFromBucketController : MonoBehaviour
@@ -10,6 +11,9 @@ public class TakingDummyFromBucketController : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite withoutDummy;
+    
+    [SerializeField] private GameObject dialogWindow;
+    [SerializeField] private TextMeshProUGUI guiText;
 
     private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();    
     
@@ -19,10 +23,21 @@ public class TakingDummyFromBucketController : MonoBehaviour
             new Vector2(width, height), 0, whatIsPlayer);
 
         if (!_playerDetect) return;
+        if (PlayerController.PerspectivePhrase1)
+        {
+            StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow,
+                "*Уборщицы нигде не видно. Зато, кажется, в ведре что-то лежит…*", guiText));
+            PlayerController.PerspectivePhrase1 = false;
+        }
+        if (!PlayerController.PerspectiveTakeSecondDummy) return;
         if (!Input.GetKeyDown(KeyCode.E)) return;
         if (PlayerInventory.hasSecondDummy) return;
         PlayerInventory.hasSecondDummy = true;
         _spriteRenderer.sprite = withoutDummy;
+        StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
+            "*Попалась. От меня не спрячешься.*", guiText));
+        PlayerController.PerspectiveTakeSecondDummy = false;
+        PlayerController.PerspectiveLetSecondDummy = true;
     }
     
     private void OnDrawGizmosSelected() 

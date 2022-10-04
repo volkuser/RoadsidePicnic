@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
@@ -20,6 +21,10 @@ public class DoorController : MonoBehaviour
     [SerializeField] [CanBeNull] private GameObject uiLockSystem;
     [SerializeField] [CanBeNull] private Sprite openedLockSystem;
     [SerializeField] [CanBeNull] private Sprite closedLockSystem;
+
+    [SerializeField] private bool isBorovDoor;
+    [SerializeField] [CanBeNull] private GameObject dialogWindow;
+    [SerializeField] [CanBeNull] private TextMeshProUGUI guiText;
 
     // animations
     private Animator _animator;
@@ -57,6 +62,14 @@ public class DoorController : MonoBehaviour
                     uiLockSystemAnimator.SetTrigger(Use);
                 }
             }
+
+            if (isBorovDoor && !PlayerController.DialogWithBorov)
+            {
+                StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
+                    "*Не за хорошим туда соваться.*", guiText));
+                return;
+            }
+            
             roomDarkening.SetActive(false);
             _animator.SetTrigger(Open);
             lockSystem!.GetComponent<SpriteRenderer>().sprite = openedLockSystem;

@@ -49,6 +49,7 @@ public class BorovOfficeDoorScript : MonoBehaviour
             "Что вы, понимаешь, привязались к честному лаборанту?", guiText));
         yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
             "Только как бы теперь это все поделикатнее сообщить Кириллу?..*", guiText));
+        PlayerController.DialogWithKiril7 = true;
     }
     
     private void OnDrawGizmosSelected() {

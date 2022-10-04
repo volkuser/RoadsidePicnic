@@ -8,7 +8,7 @@ public class ForDialogWindow : MonoBehaviour
     public static IEnumerator OneUseWithOne(GameObject dialogWindow, 
         string text, TMP_Text gui, 
         GameObject currentSpeakerFace = null, GameObject desiredSpeakerFace = null,
-        float delay = 0.00001f /*0.008f*/)
+        float delay = 0.008f /*0.008f*/)
     {
         Sprite bufferSpeakerFace = null;
         if (desiredSpeakerFace != null)

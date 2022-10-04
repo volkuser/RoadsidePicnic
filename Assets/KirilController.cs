@@ -108,6 +108,46 @@ public class KirilController : MonoBehaviour
         "Постой. Я совсем забыл кое-что. Тебе просили кое что передать.",
         "Тебе сказано явиться к Херцогу."
     };
+    
+    private readonly string[] _seventhDialogRed =
+    {
+        "В Зону не иду. Какие будут распоряжения?", 
+        "Нельзя мне. Нельзя, понимаешь? Херцог предупредил.",
+        "Да ничего особенного, донес кто-то на меня, вот и все. Ну чего ты поник то сразу?", // #
+        "*Опять он в апатию впадет. А кто виноват? Сам я и виноват.", // #
+        "Поманил дитятю пряником, а пряник-то в заначке, а заначку сердитые дяди стерегут.*", // #
+        "Думаешь, что я цену набиваю? После нашего возвращения все поймут, кто дал наводку на тот  гараж.", // #
+        "Понимаешь, чем это для меня пахнет?",
+        "*Кирилл явно о чем-то задумался.", // #
+        "А Зона-матушка ведь совсем рядом, рукой подать. Вся как на ладони с окна тринадцатого этажа.*"
+    };
+    private readonly string[] _seventhDialogKiril =
+    {
+        "Что-нибудь случилось, Рэд? Ты что, раздумал?",
+        "А что он тебе сказал?",
+        "Слушай, Рэд, а сколько она может стоить, - полная «пустышка»?"
+    };
+    
+    private readonly string[] _eightDialogRed =
+    {
+        "*Улыбаешься, Кирилл, как майская роза. Да и я не лучше.*",
+        "Из каких же это официальных источников?",
+        "А, от доктора Дугласа.. От какого же это Дугласа?",
+        "*Ай да Кирилл.. Кто же перед выходом говорит о таких вещах. Ничего эти ученые не соображают.*", // #
+        "Ладно. Где твой Тендер? Долго мы его еще ждать будем?",
+        "Кирилл, начинай молиться.",
+        "Молись! Дальше в Зону - ближе к небу.", // #
+        "Молись. Сталкеров в рай без очереди пропускают."
+    };
+    private readonly string[] _eightDialogKiril =
+    {
+        "Лаборант Шухарт, из официальных, подчеркиваю: из официальных источников я получил важные сведения.", // #
+        "Осмотр гаража может принести большую пользу науке. Есть предложение осмотреть гараж. Премиальные гарантирую.",
+        "Это конфиденциальные источники. Но вам я могу сказать… Скажем, от доктора Дугласа.",
+        "От Сэма Дугласа. Он погиб в прошлом году.",
+        "Я позвоню в ППС, закажу «летучую галошу».",
+        "Что?"
+    };
 
     private void Awake()
     {
@@ -137,7 +177,11 @@ public class KirilController : MonoBehaviour
         {
             StartCoroutine(Says());
             PlayerController.DialogWithKiril1 = false;
-        } 
+        } else if (PlayerController.DialogWithKiril8)
+        {
+            StartCoroutine(Says());
+            PlayerController.DialogWithKiril8 = false;
+        }
         
         if (!Input.GetKeyDown(KeyCode.E)) return;
         if (PlayerController.DialogWithKiril2)
@@ -163,6 +207,10 @@ public class KirilController : MonoBehaviour
         {
             StartCoroutine(Says());
             PlayerController.DialogWithKiril6 = false;
+        } else if (PlayerController.DialogWithKiril7)
+        {
+            StartCoroutine(Says());
+            PlayerController.DialogWithKiril7 = false;
         }
     }
 
@@ -269,6 +317,64 @@ public class KirilController : MonoBehaviour
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _sixthDialogRed[11],
                 guiText));
             PlayerController.DialogWithBorov = true;
+        } else if (PlayerController.DialogWithKiril7)
+        {
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[0],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogKiril[0],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[1],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogKiril[1],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[2],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[3],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[4],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogKiril[2],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[5],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[6],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[7],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _seventhDialogRed[8],
+                guiText));
+            PlayerController.PerspectiveWindow = true;
+        } else if (PlayerController.DialogWithKiril8)
+        {
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[0],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[1],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[0],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[1],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[2],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[2],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[3],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[3],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[4],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[4],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[5],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogKiril[5],
+                guiText, guiFace, kirilFace));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[6],
+                guiText));
+            yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[7],
+                guiText));
+            // GAME END (DARKENING)
         }
     }
 

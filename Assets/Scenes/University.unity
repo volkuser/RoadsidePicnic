@@ -35490,6 +35490,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundPosition: {fileID: 1530936263}
+  dialogWindow: {fileID: 2000075067}
+  guiText: {fileID: 521937518}
+  guiFace: {fileID: 143503546}
+  borovFace: {fileID: 1554798968}
 --- !u!114 &1600885576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36747,6 +36751,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStatic: 1
   offset: 0
+--- !u!1 &1686091450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686091451}
+  m_Layer: 0
+  m_Name: ActionZoneCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686091451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686091450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1990133019}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698213329
 GameObject:
   m_ObjectHideFlags: 0
@@ -41390,6 +41425,7 @@ GameObject:
   - component: {fileID: 1990133022}
   - component: {fileID: 1990133021}
   - component: {fileID: 1990133020}
+  - component: {fileID: 1990133025}
   m_Layer: 0
   m_Name: enter_door
   m_TagString: Untagged
@@ -41410,6 +41446,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 892183232}
+  - {fileID: 1686091451}
   m_Father: {fileID: 376550316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41549,6 +41586,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1990133025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990133018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad22bd4611929c4798d09c74536c429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 3
+  height: 2
+  groundPosition: {fileID: 1686091451}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dialogWindow: {fileID: 2000075067}
+  guiText: {fileID: 521937518}
 --- !u!1 &2000075067
 GameObject:
   m_ObjectHideFlags: 0

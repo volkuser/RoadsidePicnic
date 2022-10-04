@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int Speed = Animator.StringToHash("Speed");
 
     // checkers for story
-    public static bool DialogWithKiril1 = false;
+    public static bool DialogWithKiril1 = false; // TODO TRUE
     public static bool PerspectiveOnDialogWithKiril2 = false;
     public static bool DialogWithKiril2 = false;
     public static bool DialogWithKiril3 = false;
@@ -24,8 +24,12 @@ public class PlayerController : MonoBehaviour
     public static bool PerspectivePhrase1 = false;
     public static bool PerspectiveTakeSecondDummy = false;
     public static bool PerspectiveLetSecondDummy = false;
-    public static bool DialogWithKiril6 = true;
-    public static bool DialogWithBorov = false;
+    public static bool DialogWithKiril6 = false; 
+    public static bool DialogWithBorov = true; // TODO CHANGE THIS
+    public static bool PerspectiveExitFromBorovOffice = false;
+    public static bool DialogWithKiril7 = false;
+    public static bool PerspectiveWindow = false;
+    public static bool DialogWithKiril78 = false;
 
     private void Start()
     {

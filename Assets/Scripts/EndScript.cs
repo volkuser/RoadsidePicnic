@@ -10,7 +10,7 @@ public class EndScript : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N)) return;
+        if (!Input.GetKeyDown(KeyCode.N)) return;
         _fullDarkeningAnimator.SetTrigger(DarkenUp);
     }
 }

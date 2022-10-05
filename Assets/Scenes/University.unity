@@ -1215,7 +1215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &135384832
 Transform:
   m_ObjectHideFlags: 0
@@ -1243,8 +1243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
-  offset: -2
+  isStatic: 0
+  offset: 0
 --- !u!61 &135384834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2890,6 +2890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 611495686}
+  - {fileID: 267801742}
   m_Father: {fileID: 416810315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2970,11 +2971,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 261047658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
+  m_Script: {fileID: 11500000, guid: aa0d53260e2f1e5bc8ae1212344abd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
-  offset: -1.3
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  width: 2
+  height: 2
+  center: {fileID: 267801742}
+  layerPlayerInZone: 3
+  layerOther: -3
 --- !u!1 &264670629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,6 +3108,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &267801741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267801742}
+  m_Layer: 0
+  m_Name: AdditionSortPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &267801742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267801741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 261047660}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277798468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,7 +3635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &333762339
 Transform:
   m_ObjectHideFlags: 0
@@ -3625,8 +3663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
-  offset: -2
+  isStatic: 0
+  offset: 0
 --- !u!61 &333762341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3895,7 +3933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 0
-  offset: -0.9
+  offset: -1
 --- !u!212 &357349973
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4415,7 +4453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  offset: 0
+  offset: -10
 --- !u!212 &375255921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5530,7 +5568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -2
 --- !u!1 &440838690
 GameObject:
@@ -5953,7 +5991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  offset: -2
+  offset: -10
 --- !u!1 &462897804
 GameObject:
   m_ObjectHideFlags: 0
@@ -13019,7 +13057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -2
 --- !u!212 &531450434
 SpriteRenderer:
@@ -15833,7 +15871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -1
 --- !u!1 &827983737
 GameObject:
@@ -16973,10 +17011,10 @@ GameObject:
   m_Component:
   - component: {fileID: 940795920}
   - component: {fileID: 940795925}
-  - component: {fileID: 940795924}
   - component: {fileID: 940795923}
   - component: {fileID: 940795922}
   - component: {fileID: 940795921}
+  - component: {fileID: 940795926}
   m_Layer: 0
   m_Name: enter_door
   m_TagString: Untagged
@@ -16997,6 +17035,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1169291895}
+  - {fileID: 1538309126}
   m_Father: {fileID: 839315648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17073,20 +17112,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &940795924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940795919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isStatic: 1
-  offset: 0
 --- !u!212 &940795925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17139,6 +17164,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &940795926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940795919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0d53260e2f1e5bc8ae1212344abd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  width: 2
+  height: 1.8
+  center: {fileID: 1538309126}
+  layerPlayerInZone: 12
+  layerOther: -10
 --- !u!1 &942466263
 GameObject:
   m_ObjectHideFlags: 0
@@ -17483,7 +17528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  offset: -1
+  offset: -2
 --- !u!1 &975459236
 GameObject:
   m_ObjectHideFlags: 0
@@ -17608,7 +17653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -2
 --- !u!1 &976106120
 GameObject:
@@ -19905,7 +19950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: 666
 --- !u!1 &1205345691
 GameObject:
@@ -33696,7 +33741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  offset: 0
+  offset: -1
 --- !u!1 &1459029842
 GameObject:
   m_ObjectHideFlags: 0
@@ -34052,7 +34097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -1
 --- !u!212 &1489321618
 SpriteRenderer:
@@ -34794,7 +34839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -3
 --- !u!1 &1516160347
 GameObject:
@@ -34920,7 +34965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -1
 --- !u!1 &1521258165
 GameObject:
@@ -35109,6 +35154,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1600885572}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1538309125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538309126}
+  m_Layer: 0
+  m_Name: AdditionSortPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1538309126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538309125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 940795920}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553803660
 GameObject:
@@ -36541,7 +36617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 1
-  offset: 11
+  offset: 10
 --- !u!483693784 &1676005588
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -38302,7 +38378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -2
 --- !u!61 &1784643351
 BoxCollider2D:
@@ -38553,7 +38629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 1
+  isStatic: 0
   offset: -2
 --- !u!212 &1789895825
 SpriteRenderer:

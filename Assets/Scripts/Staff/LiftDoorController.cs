@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ public class LiftDoorController : MonoBehaviour
 
     [SerializeField] private GameObject dialogWindow;
     [SerializeField] private TextMeshProUGUI guiText;
+
+    [SerializeField] private GameObject transition;
+    [SerializeField] private GameObject darkening;
+    private Animator _transitionAnimator;
+    private static readonly int DarkenUp = Animator.StringToHash("DarkenUp");
     
     private Animator _animator;
     private static readonly int Open = Animator.StringToHash("Open");
@@ -22,6 +28,8 @@ public class LiftDoorController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+
+        _transitionAnimator = darkening.GetComponent<Animator>();
     }
 
     private void Start()
@@ -38,7 +46,14 @@ public class LiftDoorController : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.E)) return;
         if (!_playerDetect) return;
         if (!_isClosed) return;
-        StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, "*Ну емае. Застрял.*", guiText));
+        StartCoroutine(SayAndExit());
+    }
+
+    private IEnumerator SayAndExit()
+    {
+        yield return ForDialogWindow.OneUseWithOne(dialogWindow, "*Ну емае. Застрял.*", guiText);
+        transition.SetActive(true);
+        _transitionAnimator.SetTrigger(DarkenUp);
     }
 
     private void BoxColliderDisabled() => _boxCollider2D.enabled = false;

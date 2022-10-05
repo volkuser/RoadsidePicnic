@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public static bool PerspectiveWindow = false;
     public static bool DialogWithKiril8 = false;
 
+    public static bool GamePassed = false;
+
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();

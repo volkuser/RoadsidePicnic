@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InterviewScript : MonoBehaviour
 {
@@ -43,6 +44,12 @@ public class InterviewScript : MonoBehaviour
     };
     
     [SerializeField] private float delay = 0.05f;
+    
+    [SerializeField] private GameObject fullDarkening;
+    private Animator _fullDarkeningAnimator;
+    
+    private static readonly int DarkenUp = Animator.StringToHash("DarkenUp");
+    private void Awake() => _fullDarkeningAnimator = fullDarkening.GetComponent<Animator>();
 
     private void Start() => StartCoroutine(Process());
 
@@ -71,5 +78,6 @@ public class InterviewScript : MonoBehaviour
                 _researcherQuotes[i], researcherSpeech, interviewerSpeech));
             yield return new WaitForSeconds(1f);
         }
+        _fullDarkeningAnimator.SetTrigger(DarkenUp);
     }
 }

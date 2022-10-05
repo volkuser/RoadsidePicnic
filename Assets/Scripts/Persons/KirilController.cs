@@ -374,7 +374,7 @@ public class KirilController : MonoBehaviour
                 guiText));
             yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[7],
                 guiText));
-            // GAME END (DARKENING)
+            PlayerController.GamePassed = true;
         }
     }
 

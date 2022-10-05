@@ -1,49 +1,54 @@
+using Persons.Player;
 using TMPro;
+using UI;
 using UnityEngine;
 
-public class TakingDummyFromBucketController : MonoBehaviour
+namespace Staff
 {
-    private bool _playerDetect;
-    [SerializeField] private float width;
-    [SerializeField] private float height;
-    [SerializeField] private Transform groundPosition;
-    [SerializeField] private LayerMask whatIsPlayer;
-
-    private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Sprite withoutDummy;
-    
-    [SerializeField] private GameObject dialogWindow;
-    [SerializeField] private TextMeshProUGUI guiText;
-
-    private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();    
-    
-    private void Update()
+    public class TakingDummyFromBucketController : MonoBehaviour
     {
-        _playerDetect = Physics2D.OverlapBox(groundPosition.position, 
-            new Vector2(width, height), 0, whatIsPlayer);
+        private bool _playerDetect;
+        [SerializeField] private float width;
+        [SerializeField] private float height;
+        [SerializeField] private Transform groundPosition;
+        [SerializeField] private LayerMask whatIsPlayer;
 
-        if (!_playerDetect) return;
-        if (PlayerController.PerspectivePhrase1)
+        private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Sprite withoutDummy;
+    
+        [SerializeField] private GameObject dialogWindow;
+        [SerializeField] private TextMeshProUGUI guiText;
+
+        private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();    
+    
+        private void Update()
         {
-            StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow,
-                "*Уборщицы нигде не видно. Зато, кажется, в ведре что-то лежит…*", guiText));
-            PlayerController.PerspectivePhrase1 = false;
+            _playerDetect = Physics2D.OverlapBox(groundPosition.position, 
+                new Vector2(width, height), 0, whatIsPlayer);
+
+            if (!_playerDetect) return;
+            if (PlayerController.PerspectivePhrase1)
+            {
+                StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow,
+                    "*Уборщицы нигде не видно. Зато, кажется, в ведре что-то лежит…*", guiText));
+                PlayerController.PerspectivePhrase1 = false;
+            }
+            if (!PlayerController.PerspectiveTakeSecondDummy) return;
+            if (!Input.GetKeyDown(KeyCode.E)) return;
+            if (PlayerInventory.HasSecondDummy) return;
+            PlayerInventory.HasSecondDummy = true;
+            _spriteRenderer.sprite = withoutDummy;
+            StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
+                "*Попалась. От меня не спрячешься.*", guiText));
+            PlayerController.PerspectiveTakeSecondDummy = false;
+            PlayerController.PerspectiveLetSecondDummy = true;
         }
-        if (!PlayerController.PerspectiveTakeSecondDummy) return;
-        if (!Input.GetKeyDown(KeyCode.E)) return;
-        if (PlayerInventory.hasSecondDummy) return;
-        PlayerInventory.hasSecondDummy = true;
-        _spriteRenderer.sprite = withoutDummy;
-        StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, 
-            "*Попалась. От меня не спрячешься.*", guiText));
-        PlayerController.PerspectiveTakeSecondDummy = false;
-        PlayerController.PerspectiveLetSecondDummy = true;
-    }
     
-    private void OnDrawGizmosSelected() 
-    {
-        Gizmos.color = Color.magenta;
-        var position = groundPosition.position;
-        Gizmos.DrawWireCube(position, new Vector2(width, height));  
+        private void OnDrawGizmosSelected() 
+        {
+            Gizmos.color = Color.magenta;
+            var position = groundPosition.position;
+            Gizmos.DrawWireCube(position, new Vector2(width, height));  
+        }
     }
 }

@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+namespace Persons.Player
 {
-    public static bool hasFirstDummy = false;
-    public static bool hasSecondDummy = false;
-    public static bool hasCardForLockSystem = false;
+    public class PlayerInventory : MonoBehaviour
+    {
+        public static bool HasFirstDummy = false;
+        public static bool HasSecondDummy = false;
+        public static bool HasCardForLockSystem = false;
+    }
 }

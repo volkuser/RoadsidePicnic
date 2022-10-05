@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49eb5994021be58afbe6588c17c7dc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 177579322}
 --- !u!95 &177579327
 Animator:
   serializedVersion: 4
@@ -1024,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interviewerSpeech: {fileID: 340732881}
   researcherSpeech: {fileID: 515671586}
-  delay: 0.05
+  delay: 0.03
   fullDarkening: {fileID: 177579322}
 --- !u!4 &1621777212
 Transform:

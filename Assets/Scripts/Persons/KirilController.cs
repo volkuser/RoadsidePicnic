@@ -152,10 +152,17 @@ namespace Persons
             "Я позвоню в ППС, закажу «летучую галошу».",
             "Что?"
         };
+        
+        [SerializeField] private GameObject fullDarkening;
+        private Animator _fullDarkeningAnimator;
+        
+        private static readonly int DarkenUp = Animator.StringToHash("DarkenUp");
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            
+            _fullDarkeningAnimator = fullDarkening.GetComponent<Animator>();
         }
 
         private void Update()
@@ -379,6 +386,7 @@ namespace Persons
                 yield return StartCoroutine(ForDialogWindow.OneUseWithOne(dialogWindow, _eightDialogRed[7],
                     guiText));
                 PlayerController.GamePassed = true;
+                _fullDarkeningAnimator.SetTrigger(DarkenUp);
             }
         }
 

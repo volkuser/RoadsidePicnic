@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class InterviewScript : MonoBehaviour
 {
@@ -42,17 +41,17 @@ public class InterviewScript : MonoBehaviour
         "Я не знаю, что это такое.",
         "Понимаю. Нет, это вне нашей компетенции…"
     };
-    
-    [SerializeField] private float delay = 0.05f;
-    
+        
+    [SerializeField] private float delay = 0.01f;
+        
     [SerializeField] private GameObject fullDarkening;
     private Animator _fullDarkeningAnimator;
-    
+        
     private static readonly int DarkenUp = Animator.StringToHash("DarkenUp");
     private void Awake() => _fullDarkeningAnimator = fullDarkening.GetComponent<Animator>();
-
+    
     private void Start() => StartCoroutine(Process());
-
+    
     private IEnumerator QuestionWithAnswer(string question, string answer, 
         TMP_Text guiTextAnswer, TMP_Text guiTextQuestion)
     {
@@ -61,17 +60,17 @@ public class InterviewScript : MonoBehaviour
             guiTextQuestion.text += symbol;
             yield return new WaitForSeconds(delay);
         }
-
+    
         foreach (var symbol in answer)
         {
             guiTextAnswer.text += symbol;
             yield return new WaitForSeconds(delay);
         }
     }
-
+    
     private IEnumerator Process()
     {
-        for (var i = 0; i < 11; i++)
+        for (var i = 0; i < 10; i++)
         {
             interviewerSpeech.text = researcherSpeech.text = string.Empty;
             yield return StartCoroutine(QuestionWithAnswer(_interviewerQuotes[i], 

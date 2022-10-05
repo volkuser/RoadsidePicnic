@@ -18944,6 +18944,7 @@ MonoBehaviour:
   guiText: {fileID: 521937518}
   guiFace: {fileID: 143503546}
   kirilFace: {fileID: 297471851}
+  fullDarkening: {fileID: 1584915622}
 --- !u!114 &1174502872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19878,8 +19879,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1865192807
-  m_SortingLayer: 2
+  m_SortingLayerID: -758922073
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 89d3cbb248b994065a71a8968c6d73b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -19904,8 +19905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9d06eb676b3bd7a8a0b9754229cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStatic: 0
-  offset: 4
+  isStatic: 1
+  offset: 666
 --- !u!1 &1205345691
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ namespace Persons.Player
         public static bool PerspectiveTakeSecondDummy = false;
         public static bool PerspectiveLetSecondDummy = false;
         public static bool DialogWithKiril6 = false; 
-        public static bool DialogWithBorov = false;
+        public static bool DialogWithBorov = false; 
         public static bool PerspectiveExitFromBorovOffice = false;
         public static bool DialogWithKiril7 = false;
         public static bool PerspectiveWindow = false;

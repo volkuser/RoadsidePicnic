@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -51,7 +52,14 @@ public class InterviewScript : MonoBehaviour
     private void Awake() => _fullDarkeningAnimator = fullDarkening.GetComponent<Animator>();
     
     private void Start() => StartCoroutine(Process());
-    
+
+    private void LateUpdate()
+    {
+        if (!Input.GetKey(KeyCode.N)) return;
+        _fullDarkeningAnimator.SetTrigger(DarkenUp);
+        StopCoroutine(Process());
+    }
+
     private IEnumerator QuestionWithAnswer(string question, string answer, 
         TMP_Text guiTextAnswer, TMP_Text guiTextQuestion)
     {
